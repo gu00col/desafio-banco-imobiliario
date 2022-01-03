@@ -407,10 +407,10 @@ def main(rodadas_teste, rodadas_game, debug):
             print('\n','#'*30,'\n')
 
     # Resultados 
-    print('\n#'*30,'\n')
+    print('#'*30,)
     print('----- Resultados ----')
     Resultados().result_timeouts()
     Resultados().media_de_rodadas()
     Resultados().porcentagem_perfil()
     Resultados().perfil_vencedor()
-    print('\n#'*30,'\n')
+    print('#'*30)

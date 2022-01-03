@@ -1,139 +1,142 @@
-<div id='cabeçalho'/>  
-
-<div align=center>
-    <a><img width="450" alt="Logo" src="https://user-images.githubusercontent.com/60848932/147513743-1e2b1540-e149-409b-b5e5-476141f109e9.png"></a>
-
-# PYTHONDX - Jogo Imobiliário
-
-</div><br>
+# Desafio PYTHON
+## Simulação de Banco Imobiliário
 
 
-## 📚 Índice
- 1. [Sobre o Projeto](#projeto)
- 2. [Tecnologias Utilizadas](#tecnologias)
- 3. [Pré-requisitos](#requisitos)
- 6. [Autor](#autor)
+### Ideia: 
+Considere o seguinte jogo hipotético muito semelhante a Banco Imobiliário, onde várias de suas mecânicas
+foram simplificadas. Numa partida desse jogo, os jogadores se alteram em rodadas, numa ordem definida
+aleatoriamente no começo da partida. Os jogadores sempre começam uma partida com saldo de 300 para
+cada um.
+
+Nesse jogo, o tabuleiro é composto por 20 propriedades em sequência. Cada propriedade tem um custo de
+venda, um valor de aluguel, um proprietário caso já estejam compradas, e seguem uma determinada ordem no
+tabuleiro. Não é possível construir hotéis e nenhuma outra melhoria sobre as propriedades do tabuleiro, por
+simplicidade do problema.
+
+No começo da sua vez, o jogador joga um dado equiprovável de 6 faces que determina quantas espaços no
+tabuleiro o jogador vai andar.
+
+- Ao cair em uma propriedade sem proprietário, o jogador pode escolher entre comprar ou não a
+propriedade. Esse é a única forma pela qual uma propriedade pode ser comprada.
+- Ao cair em uma propriedade que tem proprietário, ele deve pagar ao proprietário o valor do aluguel da
+propriedade.
+- Ao completar uma volta no tabuleiro, o jogador ganha 100 de saldo.
+
+Jogadores só podem comprar propriedades caso ela não tenha dono e o jogador tenha o dinheiro da venda.
+Ao comprar uma propriedade, o jogador perde o dinheiro e ganha a posse da propriedade.
+
+Cada um dos jogadores tem uma implementação de comportamento diferente, que dita as ações que eles
+vão tomar ao longo do jogo. Mais detalhes sobre o comportamento serão explicados mais à frente.
+
+Um jogador que fica com saldo negativo perde o jogo, e não joga mais. Perde suas propriedades e portanto
+podem ser compradas por qualquer outro jogador.
+
+Termina quando restar somente um jogador com saldo positivo, a qualquer momento da partida. Esse jogador
+é declarado o vencedor.
+
+Desejamos rodar uma simulação para decidir qual a melhor estratégia. Para isso, idealizamos uma partida
+com 4 diferentes tipos de possíveis jogadores. Os comportamentos definidos são:
+
+- O jogador um é impulsivo;
+- O jogador dois é exigente;
+- O jogador três é cauteloso;
+- O jogador quatro é aleatório;
+
+O jogador impulsivo compra qualquer propriedade sobre a qual ele parar.
+
+O jogador exigente compra qualquer propriedade, desde que o valor do aluguel dela seja maior do que 50.
+
+O jogador cauteloso compra qualquer propriedade desde que ele tenha uma reserva de 80 saldo sobrando
+depois de realizada a compra.
+
+O jogador aleatório compra a propriedade que ele parar em cima com probabilidade de 50%.
+
+Caso o jogo demore muito, como é de costume em jogos dessa natureza, o jogo termina na milésima rodada
+com a vitória do jogador com mais saldo. O critério de desempate é a ordem de turno dos jogadores nesta
+partida.
+
+**Saída**
+
+Uma execução do programa proposto deve rodar 300 simulações, imprimindo no console os dados referentes
+às execuções. Esperamos encontrar nos dados as seguintes informações:
+
+- Quantas partidas terminam por time out (1000 rodadas);
+- Quantos turnos em média demora uma partida;
+- Qual a porcentagem de vitórias por comportamento dos jogadores;
+- Qual o comportamento que mais vence.
+## Stack utilizada
+
+**Back-end:** Python, sqlite
 
 
-<div id='projeto'/>  
+## Instalação
 
-<br>
+**Tecnologia usada:** Python 3.8.5
 
-## 💻 Sobre o Projeto
+Para que a simumação funcione você deve ter o python instalado
 
-Foi desenvolvido um Jogo Imobiliario em Python 3.9 <br>
-As informações do desafio estão no arquivo: *DESAFIO_PYTHONDX.pdf*
+Apôs a isntalação do python as dependencias devem ser instaladas utilizando o arquivo requirements.txt
 
-*Tarefas executadas:*
-- [x] Criar o handler do Flask
-- [x] Template para a primeira tela
-- [ ] Módulo de conexão com o BD
-- [ ] Requirements para instalação do projeto para devs
-- [ ] Cookie management
-- [ ] Template para a resposta da query para análise
-- [ ] Template para a resposta do envio da ação principal
-- [ ] Módulo para gerenciar o request e response
+- Acesse a pasta do projeto e execute o comando abaixo:
 
-*Tarefas Pendentes:*
-- [ ] Criar o handler do Flask
-- [ ] Template para a primeira tela
-
-<div id='tecnologias'/>
-
-<br>
-
-## 🛠 Tecnologias Utilizadas
-
-As seguintes ferramentas foram utilizadas na construção do projeto:
-
-&rarr; <a href="https://www.python.org/"> Python </a> - Linguagem de Programação <br>
-&rarr; <a href="https://www.sqlalchemy.org/"> SQLAlchemy </a> - Banco de Dados  <br>
-
-<div id='requisitos'/>
-
-<br>
-
-
-## 🚀 Pré-requisitos
-
-* Ter o [Java](https://www.oracle.com/br/java/technologies/javase-jdk11-downloads.html) instalado (JDK e JRE).
-* Ter o [Maven](https://maven.apache.org/) instaldo.
-
-<br>
-
-## 🚀 Dependências do projeto
-
-- <a href="https://spring.io/projects/spring-data-jpa#overview">Spring Data JPA</a><br>
-- <a href="https://spring.io/projects/spring-ws">Spring Web</a><br>
-- <a href="https://spring.io/projects/spring-boot">Spring Boot DevTools</a><br>
-- <a href="https://spring.io/guides/gs/accessing-data-mysql/">MySQL Driver </a><br>
-- <a href="https://spring.io/guides/gs/accessing-data-jpa/">H2database</a><br>
-- <a href="https://projectlombok.org/setup/maven">Lombok </a><br>
-
-<br>
-
-## 🚀 Compilando e rodando o projeto
-
-- *Faça uma copia do projeto para sua maquina*
-
-Clone o repositório:
 ```bash
-$ git clone https://github.com/caamilacgs/DaraSquad
-```
-Entre dentro da pasta:
-```bash
-$ cd DaraSquad
+  pip install -r requirements.txt
 ```
 
-- *Execute o projeto:*
+## Rodando os testes
 
-Acesse o projeto por uma IDE de sua preferência: INTELIJ, ECLIPSE, VSCODE etc.
-Consulte o arquivo aplication.properties para definir as configurações de acesso local ao banco.
-    - <a href="https://github.com/caamilacgs/DaraSquad/blob/camila/conexao/h2.md"> Procedimento de como configurar o banco H2 </a>
-    - <a href="https://github.com/caamilacgs/DaraSquad/blob/camila/conexao/mysql.md"> Procedimento de como configurar o banco MYSQL </a>
-    
-Para compilar o projeto vá até a pasta onde se encontra o arquivo `pom.xml` e execute no terminal o comando: `mvn clean install`
+Para rodar os testes, rode o seguinte comando
 
-Se o resultado do build for `BUILD SUCCESS`, rode o projeto usando: `mvn exec:java`
+Dentro da pasta do desafio execute o comando:
 
-Logo após, abra o seu navegador e acesse a pagina inicial: `http://localhost:8080/`
+```bash
+  python main.py
+```
 
-<br>
+### Ao executar a mensagem abaixo será exibida, e você deve escolher se quer ou não as mensagens do jogo
 
-## 🚀 Teste da API
+``` Antes de iniciar o teste você gostaria de ver todas as mensagens do teste? ex player 1 está na casa x e comprou a casa x? se sim digite 1 se não digite 2 ```
 
-Pode ser feito pelo swagger: <a href="http://localhost:8080/swagger-ui.html">http://localhost:8080/swagger-ui.html</a><br>
+Caso escolha exibir as mensagens será exibido os textos como o exemplo abaixo:
 
-Ou importanto a collecion no Postman: <a href="https://www.getpostman.com/collections/505906448da72bda396c">https://www.getpostman.com/collections/505906448da72bda396c</a>
+```bash
+Rodada 135
 
-<br>
+Jogador jogando 1
+Caixa: 662.0
+Perfil: impulsivo
 
-## 🤝 Autor
+Posição atual: ipanema
+Preço de compra: 110.0
+Aluguel: 55.0
+Proprietario: 2
 
-<table>
-    <td align="center"><br/>
-        <a href="https://github.com/amandagsa">
-            <img src="https://user-images.githubusercontent.com/60848932/147514081-d692f757-77ab-42d4-82be-1e521ed5522f.png" width="105px;"
-                alt="Luis Gustavo Barbosa de Oliveira" /><br><sub><b>Luis Gustavo Barbosa de Oliveira</b></sub><br></a><br/>
-        <p align="center">
-            <a href="https://github.com/gu00col">
-                <img src="https://user-images.githubusercontent.com/60848932/117540779-2bad0e80-afe7-11eb-8391-2b6661a3efc3.png"
-                    width="30px" alt="GitHub" />
-            </a>
-            <a href="https://www.linkedin.com/in/luis-g-b-oliveira/">
-                <img src="https://user-images.githubusercontent.com/60848932/117540778-29e34b00-afe7-11eb-8a68-5916e9822145.png"
-                    width="30px" alt="Linkedin" />
-            </a>
-            <a href="mailto:gu00col@gmail.com">
-                <img src="https://user-images.githubusercontent.com/60848932/117541013-3ddb7c80-afe8-11eb-83c2-79827e99ec59.png"
-                    width="30px" alt="Email" />
-            </a>
-        </p>
-    </td>
-</table>
-<div id='autor'/>
+--Tirou 4 no dado!
+Completou uma volta e recebeu 100 seu saldo anterior era 662.0 seu novo saldo é 762.0
+Se move até a casa: 4!
 
-<br>
+Posição atual: barra da tijuca
+Preço de compra: 50.0
+Aluguel: 25.0
+Proprietario: None
+O jogador comprou a propriedade barra da tijuca por 50.0 sobrando em caixa 712.0
+```
+
+## O jogo demora em media 10 minutos para ser concluido e no final um resultado como esse será exibido:
+
+```bash
+----- Resultados ----
+De 300 rodadas 175 partidas terminaram por timeout!
+A media de rodadas por partida é de 641.7066666666667
+A porcentagem de vitorias por perfil é:
+ - 12% de vitorias para o perfil aleatorio
+ - 28% de vitorias para o perfil cauteloso
+ - 25% de vitorias para o perfil exigente
+ - 35% de vitorias para o perfil impulsivo
+O perfil que mais vence é o impulsivo
+```
+## 🚀 Sobre mim
+Sou programador python a 2 anos voltado para a area de desenvolvimento web buscando me aprofundar na linguagem e aprender cada vez mais.
 
 
-[⬆ Voltar ao topo](#cabeçalho)<br>
+### Linkedin: https://www.linkedin.com/in/luis-g-b-oliveira/
